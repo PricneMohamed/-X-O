@@ -1,5 +1,5 @@
 let divo = document.querySelectorAll(".box-lite div");
-let pro = window.prompt(" \"Hello Sir\" \n Do You Want X or O ? ").toUpperCase().trim()
+let pro = prompt(" \"Hello Sir\" \n Do You Want X or O ? ").toUpperCase().trim();
 let turn = pro;
 let div1 = document.querySelector(".div1")
 let div2 = document.querySelector(".div2")
@@ -41,9 +41,8 @@ divo.forEach(
                         div5.innerHTML == "X" &&
                         div7.innerHTML == "X" 
                     ){
-                        setTimeout(msg,500)
-                        setTimeout(reload,3000)
-                    }
+                    setTimeout(msg,200)
+                    setTimeout(reload, 2000);                    }
                 }
             else if (turn === "O" && ele.innerHTML == ''){
                     ele.innerHTML = turn;
@@ -73,8 +72,8 @@ divo.forEach(
                     div5.innerHTML == "O" &&
                     div7.innerHTML == "O" 
                 ){
-                    setTimeout(msg,500)
-                    setTimeout(reload,2000)
+                    setTimeout(msg,200)
+                    setTimeout(reload, 2000);
                 }
             }
         }
@@ -82,26 +81,23 @@ divo.forEach(
 )
 
 
-let text_O = "O is Win <-> X is Lose"
-let text_X = "O is Lose <-> X is Win"
+let text_O_X = "X O GAME"
 
 let index = 1;
 
 function result(){
-    document.querySelector(".conter").innerHTML = text_O.slice(`${0,index}|`);
+    document.querySelector(".x_o").innerHTML = text_O_X.slice(0, index) + "|";
     index++
+    if(index < text_O_X.length){
+        clearInterval(wrtext)
+    }
 }
-result()
-result()
-result()
-result()
-result()
-result()
-result()
+let wrtext = setInterval(result,100)
 
+setInterval(result,100)
 
 function reload(){
-    window.location.reload(),2000
+    window.location.reload()
 }
 function msg(){
     alert(`Game Over -> ${pro} is win `)
